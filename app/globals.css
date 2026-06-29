@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background: #050505;
+  --primary: 0, 232, 135;
+  --primary-foreground: 0, 0, 0;
+  --emerald: #00E887;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: var(--background);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.overflow-y-auto::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.overflow-y-auto {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Thin green scrollbar for event detail panel */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+  display: block;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 232, 135, 0.25);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 232, 135, 0.5);
+}
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 232, 135, 0.25) transparent;
+  -ms-overflow-style: auto;
+}
+
+@layer utilities {
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-green {
+    background: rgba(0, 232, 135, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 232, 135, 0.15);
+  }
+  .glow-green {
+    box-shadow: 0 0 20px rgba(0, 232, 135, 0.4), 0 0 40px rgba(0, 232, 135, 0.15);
+  }
+  .glow-green-text {
+    text-shadow: 0 0 20px rgba(0, 232, 135, 0.6);
+  }
+  .text-emerald-brand {
+    color: #00E887;
+  }
+  .border-emerald-brand {
+    border-color: #00E887;
+  }
+  .bg-emerald-brand {
+    background-color: #00E887;
+  }
+}
+
+/* Candlestick animation */
+@keyframes candleRise {
+  0% { transform: scaleY(0.3); opacity: 0.3; }
+  50% { transform: scaleY(1); opacity: 0.7; }
+  100% { transform: scaleY(0.6); opacity: 0.4; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 232, 135, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(0, 232, 135, 0.6), 0 0 60px rgba(0, 232, 135, 0.2); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
